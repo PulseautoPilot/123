@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    .social-links {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .google-form-link {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+  <script>
+    function showSocialLinks() {
+      document.querySelector('.social-links').style.display = 'block';
+      // Background timer for 1 minute before moving to Stage 4
+      setTimeout(function() {
+        redirectToGoogleForm();
+      }, 60000);
+    }
+
+    function redirectToGoogleForm() {
+      // Generate unique session ID (you may want to use a more secure method)
+      var sessionID = generateSessionID();
+      // Prefill Google Form link with the session ID
+      var googleFormLink = "https://forms.gle/SeP3st2G7o3ujaAH7?sessionID=" + sessionID;
+      document.querySelector('.google-form-link').value = googleFormLink;
+      // Simulate automatic submission of the form
+      document.getElementById('googleForm').submit();
+    }
+
+    function generateSessionID() {
+      // This is a simple timestamp-based session ID, you may want to implement a more secure method
+      return Date.now().toString(36);
+    }
+  </script>
+</head>
+<body onload="showSocialLinks()">
+  <div class="social-links">
+    <p>Connect with us on social media:</p>
+    <a href="https://in.linkedin.com/company/scymes" target="_blank">LinkedIn</a>
+    <a href="https://m.facebook.com/p/Scymes-Services-Pvt-Ltd-100088882158313" target="_blank">Facebook</a>
+    <br>
+    <p>Paste the generated session ID in the field below before submitting the Google Form:</p>
+    <form id="googleForm" action="https://forms.gle/SeP3st2G7o3ujaAH7" method="GET" target="_blank">
+      <input type="text" class="whsOnd zHQkBf google-form-link" name="sessionID" autocomplete="off" tabindex="0" aria-labelledby="i5" aria-describedby="i6 i7" aria-disabled="false" required="" dir="auto" data-initial-dir="auto" data-initial-value="">
+    </form>
+  </div>
+</body>
+</html>
