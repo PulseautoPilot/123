@@ -42,37 +42,35 @@
     }
   </style>
   <script>
-    function startTask() {
-      showLoader();
-      // Simulate async operation
-      setTimeout(function() {
-        redirectToAmbitionBox();
-      }, 2000);
+  function startTask() {
+    showLoader();
+    // Redirect to Ambition Box
+    window.location.href = "https://www.ambitionbox.com/contribute/company-review-v3?campaign=company_info_header&company_name=Scymes%20Services%20";
+    
+    // Simulate async operation - remove this part since redirection itself is an async operation
+    /* setTimeouts */
+  }
+
+  function thankyouRewardElement() {
+    // Your logic here
+  }
+
+  function showLoader() {
+    document.querySelector('.loader').style.display = 'block';
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var thankyouRewardElement = document.querySelector(".thankyou_reward");
+
+    // If the element is present, redirect to Stage 2
+    if (thankyouRewardElement) {
+      window.location.href = "page-b.html";
     }
 
-    function redirectToAmbitionBox() {
-  window.location.href = "https://www.ambitionbox.com/contribute/company-review-v3?campaign=company_info_header&company_name=Scymes%20Services%20";
-  showLoader();
-
-  // Simulate async operation
-  setTimeout(function() {
-    thankyouRewardElement();
-  }, 2000);
-}
-
-// Check for the presence of the "thankyou_reward" element when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  var thankyouRewardElement = document.querySelector(".thankyou_reward");
-
-  // If the element is present, redirect to Stage 2
- if (thankyouRewardElement) {
-    window.location.href = "page-b.html";
-}
-
-    function showLoader() {
-      document.querySelector('.loader').style.display = 'block';
-    }
-  </script>
+    // Make the loader visible initially
+    document.querySelector('.loader').style.display = 'flex';
+  });
+</script>
 </head>
 <body>
   <div class="landing-page">
