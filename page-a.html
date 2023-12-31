@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    .landing-page {
+      background: linear-gradient(to bottom, #ffad33, #007bff, #8c8c8c);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+    }
+    .start-button {
+      background-color: #fff;
+      color: #007bff;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    .loader {
+      display: none;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 4px solid #ffffff;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  <script>
+    function startTask() {
+      showLoader();
+      // Simulate async operation
+      setTimeout(function() {
+        redirectToPageB();
+      }, 2000);
+    }
+
+    function redirectToPageB() {
+      window.location.href = "page-b.html";
+    }
+
+    function showLoader() {
+      document.querySelector('.loader').style.display = 'block';
+    }
+  </script>
+</head>
+<body>
+  <div class="landing-page">
+    <button class="start-button" onclick="startTask()">Start</button>
+    <div class="loader"></div>
+  </div>
+</body>
+</html>
