@@ -1,169 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task Compilation & Redirect</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(to right, #ff8c00, #3498db);
-      font-family: Arial, sans-serif;
-      color: #fff;
-    }
-    #landing-page {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-    #start-button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #3498db;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-    #start-button:hover {
-      background-color: #ff8c00;
-      transform: scale(1.05);
-    }
-    #linkedin,
-    #facebook {
-      margin-top: 20px;
-      display: none;
-    }
-    #google-form {
-      margin-top: 20px;
-      display: none;
-    }
-    .social-link {
-      text-decoration: none;
-      color: #fff;
-      padding: 10px;
-      border-radius: 5px;
-      margin: 0 10px;
-      background-color: #3498db;
-      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-    .social-link:hover {
-      background-color: #ff8c00;
-      transform: scale(1.05);
-    }
-    .seamless-box {
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      cursor: pointer;
-      display: none;
-    }
-    .seamless-box:hover {
-      background-color: #ecf0f1;
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-    .content {
-      text-align: center;
-      color: #333;
-    }
-    h1 {
-      color: #ff8c00;
-    }
-    h2 {
-      margin-bottom: 10px;
-      color: #3498db;
-    }
-    p {
-      margin: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Review</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 80%;
+            margin-top: 50px;
+        }
+        h1, h2, h3 {
+            color: #00008b;
+        }
+        p {
+            color: #00008b;
+        }
+        .btn-primary {
+            background-color: #e67e22;
+            border-color: #e67e22;
+            color: #ffffff;
+            margin: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #00008b;
+            border-color: #00008b;
+            color: #ffffff;
+        }
+        #section3 {
+            background-color: #d3d3d3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+        }
+    </style>
 </head>
 <body>
-  <div id="landing-page">
-    <h1>Task Compilation & Redirect</h1>
-    <button id="start-button" onclick="redirectToAmbitionBox()">Start Your Journey</button>
-    <div id="linkedin">
-      <a href="https://in.linkedin.com/company/scymes" target="_blank" rel="noopener noreferrer" class="social-link">Connect on LinkedIn</a>
-    </div>
-    <div id="facebook">
-      <a href="https://m.facebook.com/p/Scymes-Services-Pvt-Ltd-100088882158313" target="_blank" rel="noopener noreferrer" class="social-link">Connect on Facebook</a>
-    </div>
-    <div id="google-form">
-      <p>Connections confirmed! Proceed to the Google Form:</p>
-      <button onclick="generateSessionID()">Continue</button>
-    </div>
-    <div class="seamless-box">
-      <div class="content">
-        <h2>Polished Seamless UI</h2>
-        <p>Hover over the box for a refined and seamless experience!</p>
-      </div>
-    </div>
-  </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <section id="section1">
+                    <h1>Welcome to the Company Review section!</h1>
+                    <p>Please take a few minutes to share your thoughts about our company.</p>
+                    <a href="https://www.ambitionbox.com/contribute/company-review-v3?campaign=contribution_dropdown" target="_blank" class="btn btn-primary">Company Review Link</a>
+                    <button id="section1SubmitBtn" class="btn btn-primary" style="display: none;">Submit</button>
+                </section>
+                <section id="section2" style="display: none;">
+                    <h2>Thank you for completing the Company Review!</h2>
+                    <p>Have you liked and shared our page on social media?</p>
+                    <div class="social-links">
+                        <a href="https://in.linkedin.com/company/scymes" target="_blank" class="btn btn-primary">Linked In</a>
+                        <a href="https://m.facebook.com/p/Scymes-Services-Pvt-Ltd-100088882158313" target="_blank" class="btn btn-primary">Facebook</a>
+                    </div>
+                    <button id="section2SubmitBtn" class="btn btn-primary" style="display: none;">Submit</button>
+                </section>
+                <section id="section3" style="display: none;">
+                    <h3>Thank you for your valuable feedback!</h3>
+                    <p>Please copy the session code: <span id="sessionCode"></span></p>
+                    <button class="btn btn-primary" onclick="copySessionCode()">Copy Session ID</button>
+                </section>
+            </div>
+
   <script>
-    // Unique Session ID generation function
-    function generateSessionID() {
-        return Date.now().toString(36) + Math.random().toString(36).substr(2);
-    }
-    // Redirect to Ambition Box
-    function redirectToAmbitionBox() {
-        // Redirecting to the provided Ambition Box URL
-        window.location.href = "https://www.ambitionbox.com/contribute/company-review-v3?campaign=company_info_header&company_name=Scymes%20Services%20";
+      window.onbeforeunload = function() {
+        window.onbeforeunload = function() {
+            // Close any tabs or perform additional actions as needed
+            // This event will be triggered when the user goes back or closes the tab
+        };
+      function copySessionCode() {
+        var sessionCode = document.getElementById("sessionCode").innerText;
+        var textarea = document.createElement("textarea");
+        textarea.value = sessionCode;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
 
-      // Assuming the button has a class of "submit-btn"
-var submitAnonymouslyButton = document.querySelector(".submit-btn");
+        // Inform the user that the session ID is copied
+        alert("Session ID copied to clipboard! You can now close this tab by clicking the button below.");
 
-// Trigger a click event on the "Submit Anonymously" button
-if (submitAnonymouslyButton) {
-    submitAnonymouslyButton.addEventListener('click', function() {
-        // Redirect to Stage 2 after the button is clicked
-        window.location.href = "https://example.com/stage2-url";
+        // Display a button for the user to click to close the tab
+        var closeTabButton = document.createElement("button");
+        closeTabButton.innerHTML = "Close Tab";
+        closeTabButton.onclick = function() {
+            // Close the tab when the button is clicked
+        function copySessionCode() {
+            var sessionCode = document.getElementById("sessionCode").innerText;
+            var textarea = document.createElement("textarea");
+            textarea.value = sessionCode;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+
+            // Inform the user that the session ID is copied
+            alert("Session ID copied to clipboard! You can now close this tab by clicking the link below.");
+        }
+
+        function closeTab() {
+            // Close the tab
+            window.close();
+        };
+        document.body.appendChild(closeTabButton);
+    }     
+        }
+
+      // Section 1 Timer
+    setTimeout(function() {
+      document.getElementById("section1SubmitBtn").style.display = "block";
+    }, 15000);
+    // Section 1 Submit Button
+    document.getElementById("section1SubmitBtn").addEventListener("click", function() {
+      document.getElementById("section1").style.display = "none";
+      document.getElementById("section2").style.display = "block";
+      setTimeout(function() {
+        document.getElementById("section2SubmitBtn").style.display = "block";
+      }, 15000);
     });
-}
-
-// Check for the presence of the "thankyou_reward" element
-var thankyouRewardElement = document.querySelector(".thankyou_reward");
-
-// If the element is present, redirect to Stage 2
-if (thankyouRewardElement) {
-    window.location.href = "https://example.com/stage2-url";
-}
-
-        // Display Stage 2 after submission with a delay
-        setTimeout(function () {
-            document.getElementById('socialLinks').style.display = 'block';
-        }, 2000); // Adjust the delay as needed (2000 milliseconds = 2 seconds)
+    // Section 2 Submit Button
+    document.getElementById("section2SubmitBtn").addEventListener("click", function() {
+      document.getElementById("section2").style.display = "none";
+      document.getElementById("section3").style.display = "block";
+      generateSessionCode();
+    });
+    // Generate Session Code
+    function generateSessionCode() {
+      var sessionCode = generateRandomCode();
+      document.getElementById("sessionCode").innerHTML = sessionCode;
     }
-    // Timer function for Stage 2
-    function startTimerAndShowConfirmation(platform, profileURL) {
-        setTimeout(function () {
-            // Display Stage 3 after the timer expires
-            document.getElementById('googleFormsLink').style.display = 'block';
-            // Display confirmation message
-            document.getElementById('confirmationMessage').innerText = `Connected on ${platform}!`;
-        }, 60000); // 1 minute timer (adjust as needed)
-        // Open the provided social media profile URL in the same window
-        window.location.href = profileURL;
+    // Generate Random Code
+    function generateRandomCode() {
+      var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var codeLength = 10;
+      var code = "";
+      for (var i = 0; i < codeLength; i++) {
+        code += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return code;
     }
-    // Redirect to Google Forms with unique Session ID
-    function redirectToGoogleForms() {
-        // Generate a unique session ID
-        var sessionID = generateSessionID();
-        // Example Google Forms link with a unique session ID parameter
-        var googleFormsLink = "https://forms.gle/SeP3st2G7o3ujaAH7?entry.123=" + sessionID;
-        // Redirect to the generated Google Forms link
-        window.location.href = googleFormsLink;
+    
+      function copySessionCode() {
+      var sessionCode = document.getElementById("sessionCode").innerText;
+      var textarea = document.createElement("textarea");
+      textarea.value = sessionCode;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      alert("Session ID copied to clipboard!");
     }
-</script>
+  </script>
 </body>
 </html>
