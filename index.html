@@ -3,168 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Review</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            width: 80%;
-            margin-top: 50px;
-        }
-        h1, h2, h3 {
-            color: #00008b;
-        }
-        p {
-            color: #00008b;
-        }
-        .btn-primary {
-            background-color: #e67e22;
-            border-color: #e67e22;
-            color: #ffffff;
-            margin: 5px;
-        }
-        .btn-primary:hover {
-            background-color: #00008b;
-            border-color: #00008b;
-            color: #ffffff;
-        }
-        #section3 {
-            background-color: #d3d3d3;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        @media (max-width: 768px) {
-            .container {
-                width: 100%;
-                margin-top: 20px;
-            }
-            
-        }
-    </style>
+    <title>Neuromorphic UI</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <section id="section1">
-                    <h1>Welcome to the Company Review section!</h1>
-                    <p>Please take a few minutes to share your thoughts about our company.</p>
-                    <a href="https://www.google.com/search?q=scymes+services+pvt.+ltd+google+reviews&sca_esv=594880089&rlz=1C1CHZO_enIN1058IN1058&ei=N5aSZfi6HdCv4-EP8M6viAw&ved=0ahUKEwi4soDl_7uDAxXQ1zgGHXDnC8EQ4dUDCBE&uact=5&oq=scymes+services+pvt.+ltd+google+reviews&gs_lp=Egxnd3Mtd2l6LXNlcnAiJ3NjeW1lcyBzZXJ2aWNlcyBwdnQuIGx0ZCBnb29nbGUgcmV2aWV3czIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBEjkQVD4CliNLXACeAGQAQCYAakBoAGuCKoBAzAuOLgBA8gBAPgBAcICChAAGEcY1gQYsAPCAgQQABgewgICECbCAgsQABiABBiKBRiGA8ICBhAAGB4YDcICChAhGKABGMMEGAriAwQYACBBiAYBkAYH&sclient=gws-wiz-serp#" target="_blank" class="btn btn-primary">Company Review Link</a>
-                    <button id="section1SubmitBtn" class="btn btn-primary" style="display: none;">Submit</button>
-                </section>
-                <section id="section2" style="display: none;">
-                    <h2>Thank you for completing the Company Review!</h2>
-                    <p>Have you liked and shared our page on social media?</p>
-                    <div class="social-links">
-                        <a href="https://in.linkedin.com/company/scymes" target="_blank" class="btn btn-primary">Linked In</a>
-                        <a href="https://m.facebook.com/p/Scymes-Services-Pvt-Ltd-100088882158313" target="_blank" class="btn btn-primary">Facebook</a>
-                    </div>
-                    <button id="section2SubmitBtn" class="btn btn-primary" style="display: none;">Submit</button>
-                </section>
-                <section id="section3" style="display: none;">
-                    <h3>Thank you for your valuable feedback!</h3>
-                    <p>Please copy the session code: <span id="sessionCode"></span></p>
-                    <button class="btn btn-primary" onclick="copySessionCode()">Copy Session ID</button>
-                </section>
-            </div>
+    <main>
+        <section class="neuromorphic-container">
+            <h2>Welcome!</h2>
+            <p>Enter your details below:</p>
+            <form id="userForm">
+                <label for="userName">Your Name:</label>
+                <input type="text" id="userName" placeholder="Your Name" required />
 
-  <script>
-      window.onbeforeunload = function() {
-        window.onbeforeunload = function() {
-            // Close any tabs or perform additional actions as needed
-            // This event will be triggered when the user goes back or closes the tab
-        };
-      function copySessionCode() {
-        var sessionCode = document.getElementById("sessionCode").innerText;
-        var textarea = document.createElement("textarea");
-        textarea.value = sessionCode;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textarea);
+                <label for="userEmail">Your Email:</label>
+                <input type="email" id="userEmail" placeholder="Your Email" required />
 
-        // Inform the user that the session ID is copied
-        alert("Session ID copied to clipboard! You can now close this tab by clicking the button below.");
+                <button type="button" id="submitBtn">Submit</button>
+            </form>
+        </section>
+    </main>
+    <script type="module" defer>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-        // Display a button for the user to click to close the tab
-        var closeTabButton = document.createElement("button");
-        closeTabButton.innerHTML = "Close Tab";
-        closeTabButton.onclick = function() {
-            // Close the tab when the button is clicked
-        function copySessionCode() {
-            var sessionCode = document.getElementById("sessionCode").innerText;
-            var textarea = document.createElement("textarea");
-            textarea.value = sessionCode;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
+        const firebaseConfig = {
+    apiKey: "AIzaSyAmsa8hJpkbxnrHfTdJ9APbfVRejYOQCGk",
+    authDomain: "test-5-ee035.firebaseapp.com",
+    databaseURL: "https://test-5-ee035-default-rtdb.firebaseio.com",
+    projectId: "test-5-ee035",
+    storageBucket: "test-5-ee035.appspot.com",
+    messagingSenderId: "760812072159",
+    appId: "1:760812072159:web:636167c11abd4768ffcd6a"
+  };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
 
-            // Inform the user that the session ID is copied
-            alert("Session ID copied to clipboard! You can now close this tab by clicking the link below.");
-        }
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.addEventListener('click', async () => {
+          try {
+            const userName = document.getElementById('userName').value;
+            const userEmail = document.getElementById('userEmail').value;
 
-        function closeTab() {
-            // Close the tab
-            window.close();
-        };
-        document.body.appendChild(closeTabButton);
-    }     
-        }
+            if (!userName || !userEmail) {
+              throw new Error("Please fill out all the required fields.");
+            }
 
-      // Section 1 Timer
-    setTimeout(function() {
-      document.getElementById("section1SubmitBtn").style.display = "block";
-    }, 15000);
-    // Section 1 Submit Button
-    document.getElementById("section1SubmitBtn").addEventListener("click", function() {
-      document.getElementById("section1").style.display = "none";
-      document.getElementById("section2").style.display = "block";
-      setTimeout(function() {
-        document.getElementById("section2SubmitBtn").style.display = "block";
-      }, 15000);
-    });
-    // Section 2 Submit Button
-    document.getElementById("section2SubmitBtn").addEventListener("click", function() {
-      document.getElementById("section2").style.display = "none";
-      document.getElementById("section3").style.display = "block";
-      generateSessionCode();
-    });
-    // Generate Session Code
-    function generateSessionCode() {
-      var sessionCode = generateRandomCode();
-      document.getElementById("sessionCode").innerHTML = sessionCode;
-    }
-    // Generate Random Code
-    function generateRandomCode() {
-      var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      var codeLength = 10;
-      var code = "";
-      for (var i = 0; i < codeLength; i++) {
-        code += characters.charAt(Math.floor(Math.random() * characters.length));
-      }
-      return code;
-    }
-    
-      function copySessionCode() {
-      var sessionCode = document.getElementById("sessionCode").innerText;
-      var textarea = document.createElement("textarea");
-      textarea.value = sessionCode;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textarea);
-      alert("Session ID copied to clipboard!");
-    }
-  </script>
+            const sanitizedUsername = userName.trim();
+            const sanitizedUserEmail = userEmail.trim();
+
+            if (!(sanitizedUsername && /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(sanitizedUserEmail))) {
+              throw new Error("Invalid user credentials.");
+            }
+
+            const dbRef = ref(database, 'users/' + Date.now());
+            await set(dbRef, {
+              name: sanitizedUsername,
+              email: sanitizedUserEmail
+            });
+
+            console.log("Data saved successfully!");
+
+            alert("Thank you for submitting your information!");
+
+            document.getElementById('userName').value = '';
+            document.getElementById('userEmail').value = '';
+
+            setTimeout(() => {
+              window.location.href = "https://g.page/r/Caf4Eqd4wUINEB0/review";
+            }, 2000);
+
+          } catch (err) {
+            console.error("Error:", err.message);
+            alert(`An error occurred: ${err.message}`);
+          }
+        });
+    </script>
 </body>
 </html>
