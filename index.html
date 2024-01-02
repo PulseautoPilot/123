@@ -24,8 +24,6 @@
         isolation: isolate;
         width: 50%;
         aspect-ratio: 1;
-        border-radius: 50%;
-        background: radial-gradient(circle at 50% 60%, transparent 45%, #FFFFFF 45%, #FFFFFF 55%, transparent 55%);
         filter: drop-shadow(0 0.5em 0.5em rgba(0, 0, 0, 0.2));
     }
 
@@ -69,38 +67,6 @@
         filter: drop-shadow(0 0.2em 0.1em rgba(0, 0, 0, 0.2));
     }
 
-    .synapse {
-        position: absolute;
-        top: 0;
-        right: -40%;
-        bottom: 0;
-        width: 40%;
-        border-left: 4px dashed lightsalmon;
-        animation: pulse 2s ease-in-out infinite alternate;
-    }
-
-    .synapse::before {
-        content: "";
-        position: absolute;
-        left: -0.75rem;
-        top: 0.75rem;
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 50%;
-        background: linear-gradient(#4A6BF5, #FF8F40);
-        opacity: 0.5;
-        animation: pulsation 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulse {
-        from {transform: scale(1)}
-        to {transform: scale(1.2)}
-    }
-
-    @keyframes pulsation {
-        from {transform: translate(0, 0)}
-        to {transform: translate(-0.5rem, 0.5rem)}
-    }
 
     .form-container {
         position: absolute;
@@ -138,7 +104,7 @@
         appearance: none;
         outline: none;
         border: none;
-        background: linear-gradient(#FF8F40, #4A6BF5);
+        background: ##ff9a3c;
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
         cursor: pointer;
@@ -148,7 +114,7 @@
     }
 
     button:hover {
-        background: linear-gradient(#4A6BF5, #FF8F40);
+        background:#00204a ;
     }
 
     button:disabled {
